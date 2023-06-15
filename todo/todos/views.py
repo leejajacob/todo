@@ -2,7 +2,6 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from django.http import request
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, FormView
@@ -11,9 +10,13 @@ from .models import Task
 
 
 # Create your views here.
+def home(request):
+    return render(request, 'home.html')
+
+
 class CustomLoginView(LoginView):
     template_name = 'login.html'
-    fields = '__all__'
+    field = '__all__'
     redirect_authenticated_user = True
 
     def get_success_url(self):
