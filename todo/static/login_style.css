@@ -1,0 +1,38 @@
+html{
+height:100%;
+}
+body{
+height:100vh;
+font-family:sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(#141e30,#243b55);
+}
+.card-body .heading{
+font-size:25px;
+font-weight:500
+position:relative;
+}
+
+.card-body{
+max-width:800px;
+width:700%
+padding:25 px 30 px;
+background:rgba(0,0,0,5);
+box-sizing:border-box;
+border-radius:20px;
+color:white;
+}
+.login-box form .a{
+position:relative;
+display:inline-block;
+padding:10 px 20 px;
+color:#03e9f4;
+font-size:15px;
+}
+
+.loginbox .a:hover{
+background:#03e9f4;
+color:#fff;
+}

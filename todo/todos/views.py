@@ -16,7 +16,7 @@ def home(request):
 
 class CustomLoginView(LoginView):
     template_name = 'login.html'
-    field = '__all__'
+    fields = '__all__'
     redirect_authenticated_user = True
 
     def get_success_url(self):
@@ -27,7 +27,7 @@ class RegisterView(FormView):
     template_name = 'register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy('task')
+    success_url = reverse_lazy('login')
 
     def form_valid(self, form):
         user = form.save()
@@ -46,9 +46,11 @@ class TaskList(LoginRequiredMixin, ListView):
     context_object_name = 'task'
     template_name = 'list.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['task'] = context['task'].filter(user=self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['task'] = context['task'].filter(user=self.request.user)
+        context['count']=context['task'].filter(completed=False).count()
+        return context
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):

@@ -16,6 +16,13 @@ text-align:center;
 text-decoration:none;
 }
 .navbar a:hover{
-background-color:violet;
+background-color:green;
 color:black;
+}
+div.image-wrapper{
+height:50%;
+width:50%;
+content:url(todo.png);
+float:right;
+padding-right:100px;
 }
